@@ -54,8 +54,9 @@ class AuthUtil(private val context: Context) {
     }
 
     // Signup Function
-    fun signup(email: String, password: String, callback: (success: Boolean, error: String?) -> Unit) {
+    fun signup(username: String, email: String, password: String, callback: (success: Boolean, error: String?) -> Unit) {
         val jsonBody = JSONObject().apply {
+            put("username", username)
             put("email", email)
             put("password", password)
         }
