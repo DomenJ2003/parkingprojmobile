@@ -25,4 +25,5 @@
     <string name="notification_hour_description">Hour of the day to send notifications</string>
     <string name="notification_minute">Notification minute</string>
     <string name="notification_minute_description">Minute of the hour to send notifications</string>
+    <string name="hello_user">Hello, %1$s!</string>
 </resources>

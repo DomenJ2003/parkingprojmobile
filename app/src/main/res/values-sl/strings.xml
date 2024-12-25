@@ -25,4 +25,5 @@
     <string name="notification_hour_description">Ura dneva za pošiljanje obvestil</string>
     <string name="notification_minute">Minuta obvestila</string>
     <string name="notification_minute_description">Minuta ure za pošiljanje obvestil</string>
+    <string name="hello_user">Pozdravljeni, %1$s!</string>
 </resources>

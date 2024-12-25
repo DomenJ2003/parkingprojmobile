@@ -39,7 +39,7 @@
         app:layout_constraintTop_toBottomOf="@+id/mapButton" />
 
     <Button
-        android:id="@+id/LiveCameraButton"
+        android:id="@+id/liveCameraButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_large"
@@ -49,14 +49,14 @@
         app:layout_constraintTop_toBottomOf="@+id/addParkingButton" />
 
     <Button
-        android:id="@+id/SettingsButton"
+        android:id="@+id/settingsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_large"
         android:text="@string/settings"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LiveCameraButton" />
+        app:layout_constraintTop_toBottomOf="@+id/liveCameraButton" />
 
     <Button
         android:id="@+id/LogOutButton"
@@ -66,7 +66,7 @@
         android:text="LogOut"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SettingsButton" />
+        app:layout_constraintTop_toBottomOf="@+id/settingsButton" />
 
     <TextView
         android:id="@+id/textView2"

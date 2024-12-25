@@ -8,7 +8,7 @@ import com.example.parkingprojmobile.api.JwtUtil
 import com.example.parkingprojmobile.api.MqttProvider
 import com.example.parkingprojmobile.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity: AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var auth: AuthProvider
@@ -37,16 +37,28 @@ class MainActivity : AppCompatActivity() {
         if(!mqttProvider.isConnected) {
             mqttProvider.connect()
         }
-
-
-
-        binding.textView2.text = userName
-
-
+        binding.textView2.text = getString(R.string.hello_user, userName)
 
         binding.LogOutButton.setOnClickListener {
             auth.clearToken()
+            startActivity(Intent(this, LoginActivity::class.java))
             finish()
+        }
+
+        binding.mapButton.setOnClickListener {
+            startActivity(Intent(this, MapActivity::class.java))
+        }
+
+        binding.addParkingButton.setOnClickListener {
+            startActivity(Intent(this, AddParkingActivity::class.java))
+        }
+
+        binding.liveCameraButton.setOnClickListener {
+            startActivity(Intent(this, LiveCameraActivity::class.java))
+        }
+
+        binding.settingsButton.setOnClickListener {
+            startActivity(Intent(this, SettingsActivity::class.java))
         }
     }
 }
