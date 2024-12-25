@@ -1,3 +1,28 @@
 <resources>
-    <string name="app_name">ParkingProjMobile</string>
+    <string name="app_name" translatable="false">Parking Finder</string>
+    <string name="festival_name">Festival name</string>
+    <string name="description">Description</string>
+    <string name="add_event">Add event</string>
+    <string name="event_date">Event date</string>
+    <string name="address">Address</string>
+    <string name="back">Back</string>
+    <string name="set_date">Set date</string>
+    <string name="show_map">Show map</string>
+    <string name="event_list">Event list</string>
+    <string name="settings">Settings</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="log_in">Log in</string>
+    <string name="no_account">Don\'t have an account? Register</string>
+    <string name="sign_up">Sign up</string>
+    <string name="have_account">Already have an account? Log in</string>
+    <string name="event_reminder">Event Reminder</string>
+    <string name="login_sucessful">Login successful!</string>
+    <string name="error">Error: %1$s</string>
+    <string name="fill_fields">Fill in all the fields!</string>
+    <string name="sign_up_sucessful">Sign up sucessful!</string>
+    <string name="notification_hour_title">Notification hour</string>
+    <string name="notification_hour_description">Hour of the day to send notifications</string>
+    <string name="notification_minute">Notification minute</string>
+    <string name="notification_minute_description">Minute of the hour to send notifications</string>
 </resources>
