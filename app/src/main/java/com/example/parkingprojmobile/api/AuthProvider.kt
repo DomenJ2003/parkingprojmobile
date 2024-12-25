@@ -3,10 +3,11 @@ package com.example.parkingprojmobile.api
 import android.content.Context
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONObject
 import java.io.IOException
 
-class AuthUtil(private val context: Context) {
+class AuthProvider(private val context: Context) {
 
     companion object {
         private const val LOGIN_ENDPOINT = "auth/login"
@@ -24,7 +25,7 @@ class AuthUtil(private val context: Context) {
             put("password", password)
         }
 
-        val requestBody = RequestBody.create("application/json".toMediaTypeOrNull(), jsonBody.toString())
+        val requestBody = jsonBody.toString().toRequestBody("application/json".toMediaTypeOrNull())
         val request = Request.Builder()
             .url(Constants.API_URL + LOGIN_ENDPOINT)
             .post(requestBody)
