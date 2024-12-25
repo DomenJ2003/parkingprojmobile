@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="festival_name">Dogodek</string>
+    <string name="description">Opis</string>
+    <string name="add_event">Dodaj dogodek</string>
+    <string name="event_date">Datum dogodka</string>
+    <string name="address">Naslov</string>
+    <string name="back">Nazaj</string>
+    <string name="set_date">Nastavi datum</string>
+    <string name="show_map">Prikazi mapo</string>
+    <string name="event_list">Seznam dogodkov</string>
+    <string name="settings">Nastavitve</string>
+    <string name="email">E-pošta</string>
+    <string name="password">Geslo</string>
+    <string name="log_in">Prijavi se</string>
+    <string name="no_account">Nimate računa? Registracija</string>
+    <string name="sign_up">Registriraj se</string>
+    <string name="have_account">Že imate račun? Prijava</string>
+    <string name="event_reminder">Opomnik na dogodek</string>
+    <string name="login_sucessful">Prijava uspešna</string>
+    <string name="error">Napaka: %1$s</string>
+    <string name="fill_fields">Izpolnite vsa polja!</string>
+    <string name="sign_up_sucessful">Registracija uspešna!</string>
+    <string name="notification_hour_title">Ura obvestila</string>
+    <string name="notification_hour_description">Ura dneva za pošiljanje obvestil</string>
+    <string name="notification_minute">Minuta obvestila</string>
+    <string name="notification_minute_description">Minuta ure za pošiljanje obvestil</string>
+</resources>
