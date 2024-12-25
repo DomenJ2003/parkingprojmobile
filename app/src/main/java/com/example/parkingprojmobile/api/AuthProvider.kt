@@ -1,6 +1,7 @@
 package com.example.parkingprojmobile.api
 
 import android.content.Context
+import com.auth0.android.jwt.JWT
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -54,7 +55,6 @@ class AuthProvider(private val context: Context) {
         })
     }
 
-    // Signup Function
     fun signup(username: String, email: String, password: String, callback: (success: Boolean, error: String?) -> Unit) {
         val jsonBody = JSONObject().apply {
             put("username", username)
@@ -91,18 +91,32 @@ class AuthProvider(private val context: Context) {
         })
     }
 
-    // Save JWT Token Securely
     private fun saveToken(token: String) {
         sharedPreferences.edit().putString(TOKEN_KEY, token).apply()
     }
 
-    // Retrieve JWT Token
     fun getToken(): String? {
         return sharedPreferences.getString(TOKEN_KEY, null)
     }
 
-    // Clear JWT Token
     fun clearToken() {
         sharedPreferences.edit().remove(TOKEN_KEY).apply()
+    }
+
+    fun getName(): String? {
+        val jwtTokenString = sharedPreferences.getString(TOKEN_KEY, null) ?: return ""
+        val jwt = JWT(jwtTokenString)
+        return jwt.getClaim("username").asString()
+    }
+
+    fun isTokenValid(): Boolean {
+        try {
+            val jwtTokenString = sharedPreferences.getString(TOKEN_KEY, null) ?: return false
+            val jwt = JWT(jwtTokenString)
+            return !jwt.isExpired(0)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return false
+        }
     }
 }

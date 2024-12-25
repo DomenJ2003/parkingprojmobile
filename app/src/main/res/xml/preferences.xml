@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditTextPreference
+        android:key="notification_minute"
+        android:title="na vsakih x minut zelim dobiti obvestilo o parkiriscih v okolici"
+        android:summary="@string/notification_hour_description"
+        android:defaultValue="15" />
+
+    <EditTextPreference
+        android:key="notification_minute"
+        android:title="zanima me okolica x km okoli mene"
+        android:summary="@string/notification_hour_description"
+        android:defaultValue="1" />
+
+</androidx.preference.PreferenceScreen>

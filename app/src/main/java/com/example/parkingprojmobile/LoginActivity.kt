@@ -16,6 +16,11 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
         val auth = AuthProvider(this)
 
+        if(auth.isTokenValid()){
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }
+
         binding.btnLogin.setOnClickListener {
             val email = binding.etEmail.text.toString()
             val password = binding.etPassword.text.toString()
