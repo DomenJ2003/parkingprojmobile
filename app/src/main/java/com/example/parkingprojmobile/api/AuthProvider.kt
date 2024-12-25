@@ -11,8 +11,8 @@ import java.io.IOException
 class AuthProvider(private val context: Context) {
 
     companion object {
-        private const val LOGIN_ENDPOINT = "auth/login"
-        private const val SIGNUP_ENDPOINT = "auth/register"
+        private const val LOGIN_ENDPOINT = "/auth/login"
+        private const val SIGNUP_ENDPOINT = "/auth/register"
         private const val PREFS_NAME = "auth_prefs"
         private const val TOKEN_KEY = "jwt_token"
     }

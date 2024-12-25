@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.parkingprojmobile.api.AuthProvider
+import com.example.parkingprojmobile.api.JwtUtil
 import com.example.parkingprojmobile.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
@@ -16,7 +17,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
         val auth = AuthProvider(this)
 
-        if(auth.isTokenValid()){
+        if(JwtUtil.isTokenValid(auth.getToken() ?: "")) {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
