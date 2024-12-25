@@ -15,7 +15,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val auth = AuthProvider(this)
+        val auth = (application as MyApplication).authProvider
 
         if(JwtUtil.isTokenValid(auth.getToken() ?: "")) {
             startActivity(Intent(this, MainActivity::class.java))

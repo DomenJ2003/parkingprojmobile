@@ -15,8 +15,7 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val auth = AuthProvider(this)
-
+        val auth = (application as MyApplication).authProvider
 
         binding.btnRegister.setOnClickListener {
             val email = binding.etEmail.text.toString()

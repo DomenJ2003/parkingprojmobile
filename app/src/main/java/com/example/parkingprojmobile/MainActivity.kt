@@ -7,19 +7,23 @@ import com.example.parkingprojmobile.api.AuthProvider
 import com.example.parkingprojmobile.api.JwtUtil
 import com.example.parkingprojmobile.api.MqttProvider
 import com.example.parkingprojmobile.databinding.ActivityMainBinding
+import org.osmdroid.config.Configuration
+import org.osmdroid.library.BuildConfig
 
 class MainActivity: AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var auth: AuthProvider
-    private lateinit var mqttProvider: MqttProvider
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        auth = AuthProvider(this)
+        val context = applicationContext
+        Configuration.getInstance().load(context, getPreferences(MODE_PRIVATE))
+        Configuration.getInstance().userAgentValue = BuildConfig.LIBRARY_PACKAGE_NAME
+
+        val auth = (application as MyApplication).authProvider
 
         val token = auth.getToken()?: ""
 
@@ -29,14 +33,7 @@ class MainActivity: AppCompatActivity() {
         }
 
         val userName = JwtUtil.getName(token)?: ""
-        val userId = JwtUtil.getUserId(token)?: ""
 
-
-        mqttProvider = MqttProvider(userId, token)
-
-        if(!mqttProvider.isConnected) {
-            mqttProvider.connect()
-        }
         binding.textView2.text = getString(R.string.hello_user, userName)
 
         binding.LogOutButton.setOnClickListener {

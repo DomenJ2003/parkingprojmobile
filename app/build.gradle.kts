@@ -47,6 +47,8 @@ dependencies {
     implementation("org.osmdroid:osmdroid-android:6.1.13")
     implementation("org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.0")
     implementation("org.eclipse.paho:org.eclipse.paho.android.service:1.1.1")
+    implementation("com.google.android.gms:play-services-location:21.0.1")
+    implementation("com.google.code.gson:gson:2.8.8")
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
