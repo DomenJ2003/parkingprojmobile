@@ -12,5 +12,7 @@ class LiveCameraActivity: AppCompatActivity() {
         binding = ActivityLiveCameraBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // wait on VID
+
     }
 }
