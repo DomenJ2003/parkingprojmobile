@@ -1,5 +1,82 @@
 package com.example.parkingprojmobile.api
 
-class ApiUtil {
+import android.content.Context
+import com.example.parkingprojmobile.ParkingState
+import com.google.gson.Gson
+import okhttp3.*
+import java.io.IOException
+import com.google.gson.*
+import okhttp3.RequestBody.Companion.toRequestBody
+import java.lang.reflect.Type
 
+class ApiUtil(private val context: Context) {
+
+    companion object {
+        private const val MY_PARKINGS = "/parking-state/my"
+        private const val FINISH_PARKING = "/parking-state/finish/"
+        private const val PREFS_NAME = "auth_prefs"
+        private const val TOKEN_KEY = "jwt_token"
+    }
+
+    private val sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+    private val client = OkHttpClient()
+    val gson = GsonBuilder()
+        .registerTypeAdapter(Boolean::class.java, BooleanDeserializer())
+        .create()
+
+    fun getMyParkings(callback: (parkings: Array<ParkingState>?) -> Unit) {
+        val token = sharedPreferences.getString(TOKEN_KEY, "") ?: ""
+        val request = Request.Builder()
+            .url(Constants.API_URL + MY_PARKINGS)
+            .header("Authorization", "Bearer $token")
+            .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                println("Failed to get my parkings: ${e.message}")
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                if (response.isSuccessful) {
+                    val responseBody = response.body?.string()
+                    callback(gson.fromJson(responseBody, Array<ParkingState>::class.java))
+                } else {
+                    println("Failed to get my parkings: ${response.message}")
+                }
+            }
+        })
+    }
+
+    fun finishParking(parkingId: String, callback: (success: Boolean) -> Unit) {
+        val token = sharedPreferences.getString(TOKEN_KEY, "") ?: ""
+        val request = Request.Builder()
+            .url(Constants.API_URL + FINISH_PARKING + parkingId)
+            .header("Authorization", "Bearer $token")
+            .post("".toRequestBody(null))
+            .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                println("Failed to finish parking: ${e.message}")
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                if (response.isSuccessful) {
+                    callback(true)
+                } else {
+                    println("Failed to finish parking: ${response.message}")
+                }
+            }
+        })
+    }
+}
+
+class BooleanDeserializer : JsonDeserializer<Boolean> {
+    override fun deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): Boolean {
+        return when {
+            json.isJsonPrimitive && json.asJsonPrimitive.isNumber -> json.asInt != 0
+            json.isJsonPrimitive && json.asJsonPrimitive.isBoolean -> json.asBoolean
+            else -> throw JsonParseException("Unexpected type for boolean: ${json.javaClass}")
+        }
+    }
 }

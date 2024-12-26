@@ -42,6 +42,7 @@ class AddParkingActivity: AppCompatActivity() {
             val mqttProvider = (application as MyApplication).mqttProvider
 
             val parking = ParkingState(
+                "",
                 location.latitude,
                 location.longitude,
                 openFreeParking,

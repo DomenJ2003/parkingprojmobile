@@ -27,10 +27,6 @@ class MainActivity: AppCompatActivity() {
 
         val token = auth.getToken()?: ""
 
-        if(!JwtUtil.isTokenValid(token)) {
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
-        }
 
         val userName = JwtUtil.getName(token)?: ""
 
@@ -56,6 +52,10 @@ class MainActivity: AppCompatActivity() {
 
         binding.settingsButton.setOnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))
+        }
+
+        binding.myParkingsButton.setOnClickListener {
+            startActivity(Intent(this, ParkingListActivity::class.java))
         }
     }
 }

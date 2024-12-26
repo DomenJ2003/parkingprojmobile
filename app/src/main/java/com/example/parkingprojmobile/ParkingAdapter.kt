@@ -9,8 +9,8 @@ import com.example.parkingprojmobile.mapUtil.MarkerParser
 
 class ParkingAdapter(
     private val events: List<ParkingState>,
+    private val activity: AppCompatActivity,
     private val onEventClick: (ParkingState) -> Unit,
-    private val activity: AppCompatActivity
 ) : RecyclerView.Adapter<ParkingAdapter.ViewHolder>() {
 
     class ViewHolder(private val binding: ItemParkingBinding) : RecyclerView.ViewHolder(binding.root) {

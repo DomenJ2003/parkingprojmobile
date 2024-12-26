@@ -3,11 +3,13 @@ package com.example.parkingprojmobile
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.parkingprojmobile.api.ApiUtil
 import com.example.parkingprojmobile.databinding.ActivityParkingListBinding
 
 class ParkingListActivity : AppCompatActivity() {
     private lateinit var binding: ActivityParkingListBinding
     private val parkings = mutableListOf<ParkingState>()
+    private lateinit var apiUtil: ApiUtil
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,29 +19,36 @@ class ParkingListActivity : AppCompatActivity() {
         binding.backBtn.setOnClickListener{
             finish()
         }
+        apiUtil = ApiUtil(this)
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         fetchEvents()
     }
 
     private fun fetchEvents() {
-//        firestore.collection("events")
-//            .get()
-//            .addOnSuccessListener { result ->
-//                events.clear()
-//                println(result.documents.size)
-//                println()
-//                for (document in result) {
-//                    val event = document.toObject(Event::class.java)
-//                    events.add(event)
-//                }
-//                binding.recyclerView.adapter = ParkingAdapter(events) { event ->
-//                    openEventDetails(event)
-//                }
-//            }
-//            .addOnFailureListener { e ->
-//                e.printStackTrace()
-//            }
+
+        apiUtil.getMyParkings() { parkings ->
+            runOnUiThread {
+                this.parkings.clear()
+                parkings?.forEach { parking ->
+                    this.parkings.add(parking)
+                }
+                binding.recyclerView.adapter = ParkingAdapter(
+                    this.parkings,
+                    this,
+                ) { parking ->
+                    StopDialog {
+                        apiUtil.finishParking(parking._id) {
+                            val np = this.parkings.filter { it._id != parking._id }
+                            this.parkings.clear()
+                            this.parkings.addAll(np)
+                        }
+                        println("OK button pressed ${parking._id}")
+                    }.show(supportFragmentManager, "StopDialog")
+                }
+            }
+        }
+
     }
 
 }

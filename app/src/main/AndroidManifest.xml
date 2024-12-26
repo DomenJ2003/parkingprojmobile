@@ -50,6 +50,9 @@
             android:name=".SettingsActivity"
             android:exported="true">
         </activity>
+        <activity android:name=".ParkingListActivity"
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>
