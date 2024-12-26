@@ -1,5 +1,6 @@
 package com.example.parkingprojmobile.mapUtil
 
+import android.annotation.SuppressLint
 import android.location.Location
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -18,6 +19,7 @@ class MapHelper(
     private lateinit var location: Location
     private val markerList: MutableList<Marker> = mutableListOf()
 
+    @SuppressLint("MissingPermission")
     fun initMapToMyLocation(addMarker: Boolean = true) {
         val fusedLocationClient: FusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(activity)
 

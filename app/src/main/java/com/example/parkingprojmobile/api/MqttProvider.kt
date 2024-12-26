@@ -46,11 +46,12 @@ class MqttProvider(
         }
     }
 
-    fun subscribe(qos: Int = 1, callback: (message: String) -> Unit): Boolean {
+    fun subscribe(qos: Int = 0, callback: (message: String) -> Unit): Boolean {
         return try {
             mqttClient?.setCallback(object : MqttCallback {
                 override fun connectionLost(cause: Throwable?) {
                     println("Connection lost: ${cause?.message}")
+                    mqttClient?.reconnect()
                 }
 
                 override fun messageArrived(topic: String, message: MqttMessage) {
