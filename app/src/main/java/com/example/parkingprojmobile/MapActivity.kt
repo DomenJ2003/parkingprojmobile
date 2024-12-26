@@ -28,5 +28,9 @@ class MapActivity: AppCompatActivity() {
             mapHelper.addMarker(MarkerParser.parseMarkerFromMessage(it, mapView, this))
         }
 
+        binding.backButton.setOnClickListener {
+            finish()
+        }
+
     }
 }

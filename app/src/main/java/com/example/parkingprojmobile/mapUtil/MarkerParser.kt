@@ -5,7 +5,6 @@ import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import com.example.parkingprojmobile.ParkingState
 import com.google.gson.Gson
-import com.google.gson.JsonObject
 import org.osmdroid.views.MapView
 import org.osmdroid.views.overlay.Marker
 
@@ -23,18 +22,31 @@ object MarkerParser {
         newMarker.position.latitude = parkingState.lat
         newMarker.position.longitude = parkingState.lon
         newMarker.icon = getMarkerColor(parkingState.openFreeParking, parkingState.openPaidParking, activity)
+        newMarker.title = getDescription(parkingState)
 
         return newMarker
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")
-    private fun getMarkerColor(freeParking: Boolean, paidParking: Boolean, activity: AppCompatActivity): Drawable {
+    fun getMarkerColor(freeParking: Boolean, paidParking: Boolean, activity: AppCompatActivity): Drawable {
         return if (freeParking) {
             activity.resources.getDrawable(com.example.parkingprojmobile.R.drawable.ic_marker_green, null)
         } else if (paidParking) {
             activity.resources.getDrawable(com.example.parkingprojmobile.R.drawable.ic_marker_blue, null)
         } else {
             activity.resources.getDrawable(com.example.parkingprojmobile.R.drawable.ic_marker_red, null)
+        }
+    }
+
+    private fun getDescription(parkingState: ParkingState): String {
+        return if (parkingState.openFreeParking) {
+            "Free parking\nTime: ${parkingState.hour}:${parkingState.minute}"
+        } else if (parkingState.openPaidParking) {
+            "Paid parking\n" +
+                    "Time: ${parkingState.hour}:${parkingState.minute}"
+        } else {
+            "No parking\n" +
+                    "Time: ${parkingState.hour}:${parkingState.minute}"
         }
     }
 }

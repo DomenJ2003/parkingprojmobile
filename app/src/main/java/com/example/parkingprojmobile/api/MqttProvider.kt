@@ -16,11 +16,9 @@ class MqttProvider(
 
             val connOpts = MqttConnectOptions().apply {
                 isCleanSession = true
-                userName = "Bearer" // Add any username if required, often optional for token-based auth
-                password = token.toCharArray() // Add token in the password field
+                password = token.toCharArray()
             }
 
-            // Connect to the broker
             mqttClient?.connect(connOpts)
             println("Connected to MQTT Broker: ${Constants.MQTT_URL}")
             isConnected = true

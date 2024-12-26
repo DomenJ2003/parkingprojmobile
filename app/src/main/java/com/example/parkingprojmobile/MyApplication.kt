@@ -5,7 +5,6 @@ import com.example.parkingprojmobile.api.AuthProvider
 import com.example.parkingprojmobile.api.JwtUtil
 import com.example.parkingprojmobile.api.MqttProvider
 import com.example.parkingprojmobile.mapUtil.MarkerParser
-import org.osmdroid.views.overlay.Marker
 
 class MyApplication: Application() {
 
@@ -17,10 +16,16 @@ class MyApplication: Application() {
     override fun onCreate() {
         super.onCreate()
         authProvider = AuthProvider(this)
-        val token = authProvider.getToken()?: ""
-        val userName = JwtUtil.getName(token)?: ""
-        val userId = JwtUtil.getUserId(token)?: ""
 
+        val token = authProvider.getToken()?: ""
+        var userName = ""
+        var userId = ""
+        try {
+            userName = JwtUtil.getName(token)?: ""
+            userId = JwtUtil.getUserId(token)?: ""
+        } catch (e: Exception) {
+            authProvider.clearToken()
+        }
 
         mqttProvider = MqttProvider(userId, token)
 
@@ -34,8 +39,5 @@ class MyApplication: Application() {
                 parkingStateList.add(parkingState)
             }
         }
-
-
-
     }
 }

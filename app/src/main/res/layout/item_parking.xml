@@ -1,0 +1,37 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="@dimen/margin_xsmall">
+
+    <ImageView
+        android:id="@+id/parkingStatusImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="@dimen/margin_xsmall"
+        android:src="@drawable/ic_launcher_foreground" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/parkingTown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/festival_name"
+            android:textSize="@dimen/text_size_small"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/endOfParking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/event_date"
+            android:textSize="@dimen/text_size_small" />
+
+    </LinearLayout>
+
+</LinearLayout>
