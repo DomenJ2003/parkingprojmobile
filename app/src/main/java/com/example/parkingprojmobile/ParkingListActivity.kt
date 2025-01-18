@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.parkingprojmobile.api.ApiUtil
+import com.example.parkingprojmobile.data.ParkingState
 import com.example.parkingprojmobile.databinding.ActivityParkingListBinding
 
 class ParkingListActivity : AppCompatActivity() {

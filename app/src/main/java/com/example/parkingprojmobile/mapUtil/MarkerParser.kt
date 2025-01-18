@@ -3,7 +3,7 @@ package com.example.parkingprojmobile.mapUtil
 import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
-import com.example.parkingprojmobile.ParkingState
+import com.example.parkingprojmobile.data.ParkingState
 import com.google.gson.Gson
 import org.osmdroid.views.MapView
 import org.osmdroid.views.overlay.Marker

@@ -5,6 +5,7 @@ import android.icu.util.Calendar
 import android.location.Location
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.parkingprojmobile.data.ParkingState
 import com.example.parkingprojmobile.databinding.ActivityAddParkingBinding
 import com.example.parkingprojmobile.mapUtil.MapHelper
 import com.google.gson.Gson

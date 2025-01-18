@@ -4,6 +4,7 @@ import android.app.Application
 import com.example.parkingprojmobile.api.AuthProvider
 import com.example.parkingprojmobile.api.JwtUtil
 import com.example.parkingprojmobile.api.MqttProvider
+import com.example.parkingprojmobile.data.ParkingState
 import com.example.parkingprojmobile.mapUtil.MarkerParser
 
 class MyApplication: Application() {
