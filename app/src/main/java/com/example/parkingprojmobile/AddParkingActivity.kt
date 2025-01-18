@@ -74,7 +74,7 @@ class AddParkingActivity: AppCompatActivity() {
             },
             currentHour,
             currentMinute,
-            true // Use 24-hour format
+            true
         ).show()
     }
 }

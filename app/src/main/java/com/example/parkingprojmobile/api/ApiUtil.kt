@@ -2,6 +2,7 @@ package com.example.parkingprojmobile.api
 
 import android.content.Context
 import com.example.parkingprojmobile.data.LiveCameraData
+import com.example.parkingprojmobile.data.Parking
 import com.example.parkingprojmobile.data.ParkingState
 import okhttp3.*
 import java.io.IOException
@@ -15,6 +16,7 @@ class ApiUtil(private val context: Context) {
         private const val MY_PARKINGS = "/parking-state/my"
         private const val FINISH_PARKING = "/parking-state/finish/"
         private const val LIVE_DATA = "/computer-vision/data"
+        private const val ALL_PARKING = "/parking/mobile"
         private const val PREFS_NAME = "auth_prefs"
         private const val TOKEN_KEY = "jwt_token"
     }
@@ -87,6 +89,29 @@ class ApiUtil(private val context: Context) {
                 if (response.isSuccessful) {
                     val responseBody = response.body?.string()
                     callback(gson.fromJson(responseBody, LiveCameraData::class.java))
+                } else {
+                    println("Failed to live data: ${response.message}")
+                }
+            }
+        })
+    }
+
+    fun getAllParkings(callback: (parkings: Array<Parking>) -> Unit) {
+        val token = sharedPreferences.getString(TOKEN_KEY, "") ?: ""
+        val request = Request.Builder()
+            .url(Constants.API_URL + ALL_PARKING)
+            .header("Authorization", "Bearer $token")
+            .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                println("Failed to live data: ${e.message}")
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                if (response.isSuccessful) {
+                    val responseBody = response.body?.string()
+                    callback(gson.fromJson(responseBody, Array<Parking>::class.java))
                 } else {
                     println("Failed to live data: ${response.message}")
                 }
