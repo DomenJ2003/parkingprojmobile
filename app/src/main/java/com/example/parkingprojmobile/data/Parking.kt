@@ -9,5 +9,5 @@ data class Parking (
     val disabledParkingSpaces: Number = -1,
     val cona: String = "",
     val price: String = "",
-    val geometry: Geometry = Geometry()
+    val geometry: Geometry
 )
