@@ -50,10 +50,6 @@ class MainActivity: AppCompatActivity() {
             startActivity(Intent(this, LiveCameraActivity::class.java))
         }
 
-        binding.settingsButton.setOnClickListener {
-            startActivity(Intent(this, SettingsActivity::class.java))
-        }
-
         binding.myParkingsButton.setOnClickListener {
             startActivity(Intent(this, ParkingListActivity::class.java))
         }

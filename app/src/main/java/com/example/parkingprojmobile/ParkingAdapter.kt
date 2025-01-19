@@ -9,7 +9,7 @@ import com.example.parkingprojmobile.databinding.ItemParkingBinding
 import com.example.parkingprojmobile.mapUtil.MarkerParser
 
 class ParkingAdapter(
-    private val events: List<ParkingState>,
+    private val events: MutableList<ParkingState>,
     private val activity: AppCompatActivity,
     private val onEventClick: (ParkingState) -> Unit,
 ) : RecyclerView.Adapter<ParkingAdapter.ViewHolder>() {
@@ -17,10 +17,15 @@ class ParkingAdapter(
     class ViewHolder(private val binding: ItemParkingBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(parking: ParkingState, onEventClick: (ParkingState) -> Unit, activity: AppCompatActivity) {
             binding.parkingStatusImage.setImageDrawable(MarkerParser.getMarkerColor(parking.openFreeParking, parking.openPaidParking, activity))
-            binding.parkingTown.text = "aaa" // TODO: parking.town
+            binding.parkingTown.text = parking.townName
             binding.endOfParking.text = "${parking.hour}:${parking.minute}"
             binding.root.setOnClickListener { onEventClick(parking) }
         }
+    }
+    fun updateData(newParkings: List<ParkingState>) {
+        events.clear()
+        events.addAll(newParkings)
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

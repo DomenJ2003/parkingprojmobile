@@ -7,5 +7,6 @@ data class ParkingState (
     val openFreeParking: Boolean,
     val openPaidParking: Boolean,
     val hour: Int,
-    val minute: Int
+    val minute: Int,
+    val townName: String = ""
 )

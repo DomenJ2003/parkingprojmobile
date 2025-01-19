@@ -10,8 +10,6 @@ import com.example.parkingprojmobile.databinding.ActivityAddParkingBinding
 import com.example.parkingprojmobile.mapUtil.MapHelper
 import com.google.gson.Gson
 
-
-
 class AddParkingActivity: AppCompatActivity() {
     lateinit var binding: ActivityAddParkingBinding
     private lateinit var location: Location
@@ -32,6 +30,7 @@ class AddParkingActivity: AppCompatActivity() {
             showTimePicker { hour, minute ->
                 hourValue = hour
                 minuteValue = minute
+                binding.TimeText.text = "$hour : $minute"
             }
         }
 

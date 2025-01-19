@@ -25,6 +25,10 @@ class LiveCameraActivity: AppCompatActivity() {
         setContentView(binding.root)
         apiUtil = ApiUtil(this)
         fetchData()
+
+        binding.button.setOnClickListener {
+            finish()
+        }
         val videoUri = Uri.parse("android.resource://" + packageName + "/" + R.raw.video)
         binding.videoView.setVideoURI(videoUri)
         binding.videoView.setOnCompletionListener {

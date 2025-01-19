@@ -14,6 +14,7 @@ class ApiUtil(private val context: Context) {
 
     companion object {
         private const val MY_PARKINGS = "/parking-state/my"
+        private const val MY_PARKINGS_HISTORY = "/parking-state/my-history"
         private const val FINISH_PARKING = "/parking-state/finish/"
         private const val LIVE_DATA = "/computer-vision/data"
         private const val ALL_PARKING = "/parking/mobile"
@@ -49,6 +50,31 @@ class ApiUtil(private val context: Context) {
             }
         })
     }
+
+    fun getMyParkingsHistory(callback: (parkings: Array<ParkingState>?) -> Unit) {
+        val token = sharedPreferences.getString(TOKEN_KEY, "") ?: ""
+        val request = Request.Builder()
+            .url(Constants.API_URL + MY_PARKINGS_HISTORY)
+            .header("Authorization", "Bearer $token")
+            .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                println("Failed to get my parkings: ${e.message}")
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                if (response.isSuccessful) {
+                    val responseBody = response.body?.string()
+                    callback(gson.fromJson(responseBody, Array<ParkingState>::class.java))
+                } else {
+                    println("Failed to get my parkings: ${response.message}")
+                }
+            }
+        })
+    }
+
+
 
     fun finishParking(parkingId: String, callback: (success: Boolean) -> Unit) {
         val token = sharedPreferences.getString(TOKEN_KEY, "") ?: ""
