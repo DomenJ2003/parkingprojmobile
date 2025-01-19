@@ -1,10 +1,8 @@
 package com.example.parkingprojmobile.data
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.parkingprojmobile.api.ApiUtil
-import com.example.parkingprojmobile.data.ParkingState
 
 class ParkingViewModel(private val apiUtil: ApiUtil) : ViewModel() {
     private val _parkings = MutableLiveData<List<ParkingState>?>()

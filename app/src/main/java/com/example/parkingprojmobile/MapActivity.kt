@@ -106,28 +106,24 @@ class MapActivity: AppCompatActivity() {
     private fun generateParkingDescription(parking: Parking): String {
         val builder = StringBuilder()
 
-        builder.append("Parking: ").append(parking.name)
-        builder.append(" in ").append(parking.town.name)
-        builder.append(" post code ").append(parking.town.postNumber)
+        builder.append(getString(R.string.parking)).append(parking.name)
+        builder.append(getString(R.string.in_town)).append(parking.town.name)
+        builder.append(getString(R.string.post_code)).append(parking.town.postNumber)
 
         if (parking.availableSpaces.toInt() != -1) {
-            builder.append(", Available Spaces: ").append(parking.availableSpaces)
+            builder.append(getString(R.string.available_spaces)).append(parking.availableSpaces)
         }
         if (parking.freeSpaces.toInt() != -1) {
-            builder.append(", Free Spaces: ").append(parking.freeSpaces)
+            builder.append(getString(R.string.free_spaces)).append(parking.freeSpaces)
         }
         if (parking.disabledParkingSpaces.toInt() != -1) {
-            builder.append(", Disabled Parking Spaces: ").append(parking.disabledParkingSpaces)
+            builder.append(getString(R.string.disabled_parking_spaces)).append(parking.disabledParkingSpaces)
         }
-        try {
-            if (parking.price.isNotEmpty()) {
-                builder.append(", Price: ").append(parking.price)
-            }
-        }catch (errr: Error) {
-            println(parking)
+        if (parking.price.isNotEmpty()) {
+            builder.append(getString(R.string.price)).append(parking.price)
         }
-        if (parking.cona.isNotEmpty()){
-            builder.append(", Cona: ").append(parking.cona)
+        if (parking.cona.isNotEmpty()) {
+            builder.append(getString(R.string.cona)).append(parking.cona)
         }
 
         return builder.toString()

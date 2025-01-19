@@ -18,7 +18,7 @@ class ParkingAdapter(
         fun bind(parking: ParkingState, onEventClick: (ParkingState) -> Unit, activity: AppCompatActivity) {
             binding.parkingStatusImage.setImageDrawable(MarkerParser.getMarkerColor(parking.openFreeParking, parking.openPaidParking, activity))
             binding.parkingTown.text = parking.townName
-            binding.endOfParking.text = "${parking.hour}:${parking.minute}"
+            binding.endOfParking.text = "${parking.hour} : ${parking.minute}"
             binding.root.setOnClickListener { onEventClick(parking) }
         }
     }

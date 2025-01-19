@@ -19,10 +19,8 @@ class MyApplication: Application() {
         super.onCreate()
         authProvider = AuthProvider(this)
         val token = authProvider.getToken()?: ""
-        var userName = ""
         var userId = ""
         try {
-            userName = JwtUtil.getName(token)?: ""
             userId = JwtUtil.getUserId(token)?: ""
         } catch (e: Exception) {
             authProvider.clearToken()

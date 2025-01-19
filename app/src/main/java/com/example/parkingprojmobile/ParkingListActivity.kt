@@ -36,12 +36,12 @@ class ParkingListActivity : AppCompatActivity() {
 
         binding.activeBtn.setOnClickListener {
             parkingViewModel.fetchActiveEvents()
-            binding.activeText.text = "Active"
+            binding.activeText.text = getString(R.string.active)
         }
 
         binding.historyButton.setOnClickListener {
             parkingViewModel.fetchHistoryEvents()
-            binding.activeText.text = "History"
+            binding.activeText.text = getString(R.string.history)
         }
 
         observeViewModel()

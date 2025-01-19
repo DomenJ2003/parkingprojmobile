@@ -48,7 +48,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Parking ID"
+                    android:text="@string/parking_id"
                     android:gravity="center"
                     android:padding="8dp"
                     android:background="#E0E0E0"
@@ -58,7 +58,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Free/Busy"
+                    android:text="@string/free_busy"
                     android:gravity="center"
                     android:padding="8dp"
                     android:background="#F0F0F0"
@@ -89,7 +89,7 @@
                     android:background="#F0F0F0"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="Free" />
+                    android:text="@string/free_park" />
             </TableRow>
 
             <TableRow
@@ -114,7 +114,7 @@
                     android:background="#F0F0F0"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="Busy" />
+                    android:text="@string/busy_park" />
             </TableRow>
 
             <TableRow
@@ -139,7 +139,7 @@
                     android:background="#F0F0F0"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="Busy" />
+                    android:text="@string/busy_park" />
             </TableRow>
 
             <TableRow
@@ -164,7 +164,7 @@
                     android:background="#F0F0F0"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="Busy" />
+                    android:text="@string/busy_park" />
             </TableRow>
 
             <TableRow
@@ -189,7 +189,7 @@
                     android:background="#F0F0F0"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="Busy" />
+                    android:text="@string/busy_park" />
             </TableRow>
 
             <TableRow
@@ -214,7 +214,7 @@
                     android:background="#F0F0F0"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="Busy" />
+                    android:text="@string/busy_park" />
             </TableRow>
             <TableRow
                 android:layout_width="match_parent"
@@ -238,7 +238,7 @@
                     android:background="#F0F0F0"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="Busy" />
+                    android:text="@string/busy_park" />
             </TableRow>
             <TableRow
                 android:layout_width="match_parent"
@@ -262,7 +262,7 @@
                     android:background="#F0F0F0"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="Busy" />
+                    android:text="@string/busy_park" />
             </TableRow>
 
         </TableLayout>

@@ -70,9 +70,9 @@ class LiveCameraActivity: AppCompatActivity() {
 
     private fun getText(videoSec: Number, space: List<Number>): String {
         if(space.contains(videoSec)){
-            return "Free"
+            return getString(R.string.free_park)
         }
-        return "Busy"
+        return getString(R.string.busy_park)
     }
 
     override fun onDestroy() {

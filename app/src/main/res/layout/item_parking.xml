@@ -21,7 +21,6 @@
             android:id="@+id/parkingTown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/festival_name"
             android:textSize="@dimen/text_size_small"
             android:textStyle="bold" />
 
@@ -29,7 +28,6 @@
             android:id="@+id/endOfParking"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/event_date"
             android:textSize="@dimen/text_size_small" />
 
     </LinearLayout>
